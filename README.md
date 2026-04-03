@@ -14,3 +14,20 @@ An interactive dashboard built to analyze the financial health of Canada's top c
 ## How to View the Project
 1. Download the `.pbix` file included in this repository.
 2. Open using **Power BI Desktop**.
+## The Development Process
+
+### 1. Data Retrieval & Cleaning (The "Messy" Work)
+* **The Problem:** Raw data from Wikipedia was inconsistent; some figures were in "Millions" while others were in "Thousands," causing visual distortions.
+* **The Solution:** Used **Power Query** to normalize scales by creating conditional columns, ensuring all financial figures were converted to a single "Millions" standard.
+
+### 2. Custom DAX Calculations (The "Analyst" Brain)
+* **The Problem:** The raw dataset lacked a percentage-based margin, making it difficult to compare efficiency across industries of different sizes.
+* **The Solution:** Engineered a custom DAX measure: 
+  `Profit Margin = DIVIDE(SUM('Master_Data'[Profit]), SUM('Master_Data'[Revenue]))`
+* **Impact:** This allows for dynamic, accurate comparisons regardless of which industry or company is selected.
+
+### 3. UI/UX Design (The "Executive" Presentation)
+* **The Problem:** Basic, unformatted charts can be overwhelming and lack a professional "corporate" feel.
+* **The Solution:** * **Glass-morphism Container:** High-lighted high-level KPIs on a subtle left-hand panel for immediate impact.
+  * **Direct Data Labels:** Enabled precise percentage labels on bar charts to eliminate guesswork.
+  * **Interactive Slicers:** Converted standard lists into "Tile Buttons" for a modern, app-like user experience.
